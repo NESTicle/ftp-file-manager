@@ -1,0 +1,8 @@
+//-(ng-Hide="vm.mapaProceso")
+.row
+    .col-12
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item(ng-Repeat="item in vm.breadcrumb track by $index", ng-Class="{'active': $last}")
+                    a(href='#', ng-If="!$last", ng-Click="vm.routing(item)", title="{{item}}") {{item}}
+                    span(ng-If="$last") {{item}}

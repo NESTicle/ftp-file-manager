@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .container-scroller(ng-Init="vm.mapaProceso = true;")
+  include header
+
+  .container-fluid.page-body-wrapper
+    include sidebar
+
+    .main-panel
+      //-.content-wrapper
+      br
+
+      .row
+          .col-md-12.grid-margin
+            .card
+              .card-body
+                if tipo === 'Estratégico'
+                  proceso-estrategico
+                else if tipo === 'Misional'
+                  proceso-misional
+                else if tipo === 'Apoyo'
+                  proceso-apoyo
+                else if tipo === 'Otros'
+                  otros-documentos
+                else
+                  .alert.alert-warning(role='alert')
+                    | En este momento no se ha creado un componente para visualizar el tipo de proceso llamado 
+                    b #{tipo}
+
+      include footer

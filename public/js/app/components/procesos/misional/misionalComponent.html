@@ -1,0 +1,57 @@
+<section class="row" ng-init="vm.onInitMisional()">
+    <div class="col-md-5">
+        <img src="/img/procesos/{{vm.proceso.Img}}" class="img-fluid" />
+    </div>
+
+    <div class="col-md-7">
+        <div class="float-right">
+            <h4 class="title-proceso">
+                {{vm.proceso.Nombre}} <span class="misional">{{vm.proceso.Tipo}}</span>
+            </h4>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <main class="container ml-5" ng-show="vm.visualizarLineaTrabajo == false">
+            <div class="row" ng-show="vm.subprocesos && vm.subprocesos.length > 0">
+                <a ng-repeat="item in vm.subprocesos"
+                    class="col-xs-12 col-md-5 ml-2 mr-2 mb-3 proceso-button proceso-button--misional"
+                    href="/ftp?path={{vm.proceso.Path}}/{{item.Path}}&tipo='Documentacion'">
+                    {{item.Nombre}}
+                </a>
+            </div>
+
+            <div class="alert alert-warning" role="alert" ng-hide="vm.subprocesos && vm.subprocesos.length > 0">
+                No se han encontrado <b>Subprocesos</b> para el Proceso seleccionado, por favor informar al
+                administrador del sistema que parametrice los <i>Subprocesos</i> para {{vm.proceso.Nombre}}.
+            </div>
+        </main>
+
+        <!-- Lineas de Trabajo -->
+        <main class="container ml-5" ng-show="vm.visualizarLineaTrabajo == true">
+            <div class="row">
+                <a ng-repeat="item in vm.proceso.LineasTrabajo"
+                    class="col-xs-12 col-md-5 ml-2 mr-2 mb-3 proceso-button proceso-button--misional"
+                    href="/ftp?path={{vm.proceso.Path}}/LINEA DE TRABAJO/{{item.Path}}&tipo='Documentacion'">
+                    {{item.Nombre}}
+                </a>
+            </div>
+        </main>
+
+        <div class="container" style="width: 50%;" ng-show="vm.proceso.Nombre === 'Gestión Clínica'">
+            <div class="row" ng-hide="vm.visualizarLineaTrabajo == true">
+                <a class="col mt-3 proceso-button proceso-button--misional" ng-click="vm.visualizarLineasTrabajo()"
+                    href="#">
+                    Líneas de Trabajo
+                </a>
+            </div>
+
+            <div ng-show="vm.visualizarLineaTrabajo == true">
+                <hr />
+                <button type="button" class="btn btn-primary btn-block" ng-click="vm.visualizarLineasTrabajo()">
+                    <span class="mdi mdi-arrow-left-bold"></span> Volver
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

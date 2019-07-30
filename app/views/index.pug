@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  .container-scroller
+  include header
+
+  .container-fluid.page-body-wrapper
+    include sidebar
+    
+    .main-panel
+      .content-wrapper
+        .row
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Direccionamiento')
+                        img(src="/img/menu-items/indicadores.jpeg")
+                    h2
+                        | Direccionamiento Estratégico
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Direccionamiento') Navegar
+
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Modelo Procesos de Calidad')
+                        img(src="/img/menu-items/documentacion.jpeg")
+                    h2
+                        | Modelo de Procesos
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Modelo Procesos de Calidad') Navegar
+
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Habilitacion - PAMEC')
+                        img(src="/img/menu-items/planes-mejoramiento.jpeg")
+                    h2
+                        | Habilitación PAMEC
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Habilitacion - PAMEC') Navegar
+
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Acreditacion ISO 9000')
+                        img(src="/img/menu-items/otros-documentos.jpeg")
+                    h2
+                        | Acreditación ISO 9000
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Acreditacion ISO 9000') Navegar
+        
+        .row
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Seguridad')
+                        img(src="/img/menu-items/seguridad-clinica.jpeg")
+                    h2
+                        | Seguridad Clínica
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Seguridad') Navegar
+
+            .col-xs-12.col-md-3
+                .card-item
+                    a(href='/ftp?path=Cultura de Calidad')
+                        img(src="/img/menu-items/reunion.jpeg")
+                    h2
+                        | Cultura de Calidad
+                        br
+                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    .text-center.card-item__footer
+                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Cultura de Calidad') Navegar
+        
+
+      include footer

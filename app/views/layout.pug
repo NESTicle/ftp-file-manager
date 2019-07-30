@@ -1,0 +1,45 @@
+doctype html
+html(lang='es', ng-App="calipsuApp")
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    title= title + ' - Calipsu'
+    block css
+      link(rel='stylesheet', href='/css/vendors/iconfonts/mdi/css/materialdesignicons.min.css')
+      link(rel='stylesheet', href='/css/vendors/fontawesome/css/all.min.css')
+
+      link(rel='stylesheet', href='/css/style.css')
+      link(rel='stylesheet', href='/css/dashboard.css')
+      link(rel='stylesheet', href='/nodeModules/angular-loading-bar/src/loading-bar.css')
+
+    block js
+      //- Archivos Javascript para el Diseño de la Aplicación
+      script(src='/js/vendors/vendor.bundle.base.js')
+      script(src='/js/off-canvas.js')
+      script(src='/js/misc.js')
+      
+      //- Componentes y Framework Angularjs
+      script(src='/nodeModules/angular/angular.min.js')
+      script(src='/nodeModules/angular-loading-bar/src/loading-bar.js')
+      script(src='/nodeModules/sweetalert/dist/sweetalert.min.js')
+
+      //- Aplicación de Angularjs
+      script(src='/angular/app.js')
+      script(src='/angular/base/genericService.js')
+      script(src='/angular/services/ftpService.js')
+
+      //- Controllers de Angularjs
+      script(src='/angular/controllers/calipsuController.js')
+
+      //- Componentes de Angularjs
+      script(src='/angular/components/fileIcon/fileIconComponent.js')
+      script(src='/angular/components/mapaProcesos/mapaProcesosComponent.js')
+      script(src='/angular/components/procesos/apoyo/apoyoComponent.js')
+      script(src='/angular/components/procesos/estrategico/estrategicoComponent.js')
+      script(src='/angular/components/procesos/misional/misionalComponent.js')
+      script(src='/angular/components/procesos/otros-documentos/otrosDocumentosComponent.js')
+      
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body(ng-Controller="calipsuController as vm")
+    block content

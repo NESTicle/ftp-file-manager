@@ -1,0 +1,30 @@
+<section class="row" ng-init="vm.onInitApoyo()">
+    <div class="col-md-5">
+        <img src="/img/procesos/{{vm.proceso.Img}}" class="img-fluid" />
+    </div>
+
+    <div class="col-md-7">
+        <div class="float-right">
+            <h4 class="title-proceso">
+                {{vm.proceso.Nombre}} <span class="apoyo">{{vm.proceso.Tipo}}</span>
+            </h4>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <main class="container ml-5">
+            <div class="row" ng-show="vm.subprocesos && vm.subprocesos.length > 0">
+                <a ng-repeat="item in vm.subprocesos"
+                    class="col-xs-12 col-md-5 ml-2 mr-2 mb-3 proceso-button proceso-button--apoyo"
+                    href="/ftp?path={{vm.proceso.Path}}/{{item.Path}}&tipo='Documentacion'">
+                    {{item.Nombre}}
+                </a>
+            </div>
+
+            <div class="alert alert-warning" role="alert" ng-hide="vm.subprocesos && vm.subprocesos.length > 0">
+                No se han encontrado <b>Subprocesos</b> para el Proceso seleccionado, por favor informar al
+                administrador del sistema que parametrice los <i>Subprocesos</i> para {{vm.proceso.Nombre}}.
+            </div>
+        </main>
+    </div>
+</section>
