@@ -28,7 +28,7 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compress());
 
-  app.use(mongooseMorgan({ connectionString: 'mongodb://localhost:27017/calipsu' }, {
+  app.use(mongooseMorgan({ connectionString: 'mongodb://localhost:27017/ftpFileManager' }, {
     skip: (req, res) => {
       return res.statusCode < 400;
     },
@@ -44,52 +44,17 @@ module.exports = (app, config) => {
   app.use(favicon(`${config.root}/public/img/favicon.ico`));
 
   app.get('/', (req, res, next) => {
-    if (!req.cookies || !req.cookies.calipsu_logged_user)
-      return res.redirect(redirectToOAuth());
-
     res.render('index', {
       title: 'Página de Inicio',
-      user: req.cookies.calipsu_logged_user
     });
   });
 
   app.get('/ftp', (req, res, next) => {
-    if (!req.cookies || !req.cookies.calipsu_logged_user)
-      return res.redirect(redirectToOAuth());
-
     let path = req.query.path;
 
     res.render('ftp', {
       title: 'Administrador de Archivos',
-      path: path,
-      user: req.cookies.calipsu_logged_user
-    });
-  });
-
-  app.get('/mapa-proceso', (req, res, next) => {
-    if (!req.cookies || !req.cookies.calipsu_logged_user)
-      return res.redirect(redirectToOAuth());
-
-    let proceso = req.query.proceso;
-
-    res.render('mapa-proceso', {
-      title: 'Mapa de Procesos',
-      user: req.cookies.calipsu_logged_user
-    });
-  });
-
-  app.get('/mapa', (req, res, next) => {
-    if (!req.cookies || !req.cookies.calipsu_logged_user)
-      return res.redirect(redirectToOAuth());
-
-    let proceso = req.query.proceso;
-    let tipoProceso = req.query.tipo;
-
-    res.render('mapa', {
-      title: 'Mapa de Procesos',
-      proceso: proceso,
-      tipo: tipoProceso,
-      user: req.cookies.calipsu_logged_user
+      path: path
     });
   });
 
@@ -125,10 +90,6 @@ module.exports = (app, config) => {
       title: 'error'
     });
   });
-
-  let redirectToOAuth = () => {
-    return `${config.oauth}?key=8b1771896cee4da58857018b61f3aed4&pass=Ips Universitaria&redirectTo=${config.currentUrl}&encrypt=true`;
-  }
 
   return app;
 };

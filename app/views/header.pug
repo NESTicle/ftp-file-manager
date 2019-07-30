@@ -1,15 +1,3 @@
-.header-bg
-  .float-left(style='margin-left: 7px')
-    a(href="/")
-      img(class='header-logo', src='/img/logo_ipsUniversitaria.png', title='GHIPS: Gestión Hospitalaria IPS')
-
-  section.float-right.text-right.app-info
-    img(class="logo-horizontal", src="/img/logo_calipsu_horizontal.png", title='Calipsu: Información para la Calidad')
-    br
-    span.badge.badge-primary(title='Versión actual')
-      | Versión: 01.01.20190722
-  .clearfix
-
 nav.navbar.default-layout.col-lg-12.col-12.p-0.d-flex.flex-row
     .text-center.navbar-brand-wrapper.d-flex.align-items-top.justify-content-center
       span.navbar-brand.brand-logo
@@ -23,10 +11,7 @@ nav.navbar.default-layout.col-lg-12.col-12.p-0.d-flex.flex-row
       ul.navbar-nav.ml-auto
         li.nav-item.dropdown.d-none.d-xl-inline-block.user-dropdown
           a#UserDropdown.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-expanded='false')
-            if user !== "undefined" && user.username === "1017205178"
-              img(src="/img/link-transparent-nes-4.gif", class="is-julio-online")
-            else
-              span.mdi(class="mdi-account-circle", style="padding-right: 3px;")
+            span.mdi(class="mdi-account-circle", style="padding-right: 3px;")
             
             span Bienvenido(a)
             //- img.img-xs.rounded-circle(src='../assets/images/faces/face8.jpg' alt='Profile image')
@@ -34,9 +19,9 @@ nav.navbar.default-layout.col-lg-12.col-12.p-0.d-flex.flex-row
             .dropdown-header.text-center
               //- img.img-md.rounded-circle(src='../assets/images/faces/face8.jpg' alt='Profile image')
               //- p.mb-1.mt-3.font-weight-semibold Julio Poveda
-              p.font-weight-light.text-muted.mb-0 #{typeof user === "undefined" ? "" : user.email}
+              p.font-weight-light.text-muted.mb-0 #{typeof user === "undefined" ? "julio.poveda@protonmail.com" : user.email}
               
-            a.cursor--pointer.dropdown-item(href="/logout/")
+            a.cursor--pointer.dropdown-item(href="#")
               i.dropdown-item-icon.mdi.mdi-power
               | Cerrar sesión
       button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center(type='button' data-toggle='offcanvas')

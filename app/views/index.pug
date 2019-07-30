@@ -1,81 +1,59 @@
 extends layout
 
 block content
-  .container-scroller
+  .container-scroller(ng-Init="vm.getFilesInit()")
   include header
 
   .container-fluid.page-body-wrapper
     include sidebar
-    
+
     .main-panel
       .content-wrapper
+        include breadcrumb
+
         .row
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Direccionamiento')
-                        img(src="/img/menu-items/indicadores.jpeg")
-                    h2
-                        | Direccionamiento Estratégico
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Direccionamiento') Navegar
+          .col-md-12.grid-margin
+            .card(ng-Class="{'ng-busy no-drag-me': vm.processing}")
+              .card-body
+                .row
+                  .table-responsive
+                    table(class="table table-hover table-striped")
+                      thead
+                        tr
+                          th(style="width: 44px;")
+                          th 
+                            span(ng-Click="vm.sortByColumn('name')", class="cursor--pointer") Nombre
+                            |
+                            i(class="mdi", ng-Show="vm.propertyName == 'name'" ng-Class="vm.reverse === true ? 'mdi-arrow-down-bold': 'mdi-arrow-up-bold'")
+                          th(ng-Show="vm.searching")
+                            span(ng-Click="vm.sortByColumn('simplePath')", class="cursor--pointer") Ruta
+                            |
+                            i(class="mdi", ng-Show="vm.propertyName == 'simplePath'" ng-Class="vm.reverse === true ? 'mdi-arrow-down-bold': 'mdi-arrow-up-bold'")
+                          th
+                            span(ng-Click="vm.sortByColumn('type')", class="cursor--pointer") Tipo
+                            |
+                            i(class="mdi", ng-Show="vm.propertyName == 'type'" ng-Class="vm.reverse === true ? 'mdi-arrow-down-bold': 'mdi-arrow-up-bold'")
+                          th
+                            span(ng-Click="vm.sortByColumn('size')", class="cursor--pointer") Tamaño
+                            |
+                            i(class="mdi", ng-Show="vm.propertyName == 'size'" ng-Class="vm.reverse === true ? 'mdi-arrow-down-bold': 'mdi-arrow-up-bold'")
+                      tbody
+                        tr
+                          td(colspan="4", class="text-center", ng-Hide="vm.data.length > 0")
+                            span.mdi.mdi-alert-box.no-data__table
+                            | No se ha encontrado ningún dato para listar en esta tabla
 
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Modelo Procesos de Calidad')
-                        img(src="/img/menu-items/documentacion.jpeg")
-                    h2
-                        | Modelo de Procesos
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Modelo Procesos de Calidad') Navegar
-
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Habilitacion - PAMEC')
-                        img(src="/img/menu-items/planes-mejoramiento.jpeg")
-                    h2
-                        | Habilitación PAMEC
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Habilitacion - PAMEC') Navegar
-
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Acreditacion ISO 9000')
-                        img(src="/img/menu-items/otros-documentos.jpeg")
-                    h2
-                        | Acreditación ISO 9000
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Acreditacion ISO 9000') Navegar
-        
-        .row
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Seguridad')
-                        img(src="/img/menu-items/seguridad-clinica.jpeg")
-                    h2
-                        | Seguridad Clínica
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Seguridad') Navegar
-
-            .col-xs-12.col-md-3
-                .card-item
-                    a(href='/ftp?path=Cultura de Calidad')
-                        img(src="/img/menu-items/reunion.jpeg")
-                    h2
-                        | Cultura de Calidad
-                        br
-                        small Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    .text-center.card-item__footer
-                        a.btn.btn-primary.btn-rounded.btn-fw(href='/ftp?path=Cultura de Calidad') Navegar
-        
+                        tr(ng-Repeat="item in vm.data | orderBy : vm.propertyName:vm.reverse")
+                          td(class="text-center")
+                            file-icon(file="item")
+                          td
+                            |  
+                            span(class="cursor--pointer", ng-Click="vm.changeRoute(item)", title="{{item.name}}") {{item.name}}
+                          td.cursor--help(title='{{item.simplePath}}', ng-Show="vm.searching")
+                            |  {{item.simplePath | limitTo:40}} {{item.simplePath.length > 40 ? '...' : ''}}
+                          td
+                            |  {{item.type == 'd' ? 'Carpeta' : 'Archivo'}}
+                          td
+                            |  {{item.size == 0 ? '-' : item.size}}
 
       include footer
