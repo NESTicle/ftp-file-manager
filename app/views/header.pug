@@ -1,9 +1,9 @@
 nav.navbar.default-layout.col-lg-12.col-12.p-0.d-flex.flex-row
     .text-center.navbar-brand-wrapper.d-flex.align-items-top.justify-content-center
       span.navbar-brand.brand-logo
-        span.menu-principal Menú Principal
+        span.menu-principal File Manager App v0.1
       span.navbar-brand.brand-logo-mini(href='#')
-        span Calipsu
+        span File Manager App
     .navbar-menu-wrapper.d-flex.align-items-center
       form.search-form.d-none.d-md-block(ng-Submit="vm.searchFiles(vm.searchParams)", ng-Hide="vm.mapaProceso")
         .form-group
@@ -16,10 +16,13 @@ nav.navbar.default-layout.col-lg-12.col-12.p-0.d-flex.flex-row
             span Bienvenido(a)
             //- img.img-xs.rounded-circle(src='../assets/images/faces/face8.jpg' alt='Profile image')
           .dropdown-menu.dropdown-menu-right.navbar-dropdown(aria-labelledby='UserDropdown')
-            .dropdown-header.text-center
-              //- img.img-md.rounded-circle(src='../assets/images/faces/face8.jpg' alt='Profile image')
-              //- p.mb-1.mt-3.font-weight-semibold Julio Poveda
-              p.font-weight-light.text-muted.mb-0 #{typeof user === "undefined" ? "julio.poveda@protonmail.com" : user.email}
+            .dropdown-header
+              .row
+                .col-xs-12.col-sm-3
+                  img.img-xs.rounded-circle(src=`https://avatars1.githubusercontent.com/u/1715022?s=460&v=4` alt='Imagen de Perfil', title="Imagen de Perfil")
+                .col-xs-12.col-sm-9
+                  p.mb-1.mt-0.font-weight-semibold Usuario
+                  small.font-weight-light.text-muted.mb-0 #{typeof user === "undefined" ? "julio.poveda@protonmail.com" : user.email}
               
             a.cursor--pointer.dropdown-item(href="#")
               i.dropdown-item-icon.mdi.mdi-power

@@ -1,65 +1,18 @@
 block content
     nav#sidebar.sidebar.sidebar-offcanvas
       ul.nav
-        //- li.nav-item.nav-category Menú Principal
+        li.nav-item.nav-category Menú Principal
         li.nav-item
-          a.nav-link(href='/mapa-proceso')
-            span.mdi.mdi-folder
-            span.menu-title Documentación
-        li.nav-item
-          a.nav-link(href='/mapa?tipo=Otros')
-            span.mdi.mdi-folder-multiple
-            span.menu-title Otros Documentos
-        li.nav-item
-          a.nav-link(href='/ftp?path=Registros y Soportes')
-            
-            span.mdi.mdi-file-document-box
-            span.menu-title Registros y Soportes
+          a.nav-link(href='?path=Indicadores')
+            span.mdi.mdi-chart-bar
+            span.menu-title Main Folder
         
         li.nav-item
-          a.nav-link(href='/ftp?path=Portafolio')
-            span.mdi.mdi-briefcase
-            span.menu-title Portafolio
-        li.nav-item
-          a.nav-link(href='/ftp?path=Requisitos Legales')
-            span.mdi.mdi-book-open-page-variant
-            span.menu-title Requisitos Legales
-        li.nav-item
-          a.nav-link(href='/ftp?path=Indicadores')
-            span.mdi.mdi-chart-bar
-            span.menu-title Indicadores
-        li.nav-item
-          a.nav-link(href='/ftp?path=Comites')
-            span.mdi.mdi-account-multiple
-            span.menu-title Comités
-        li.nav-item
-          a.nav-link(href='http://10.20.65.66/Ghips/Account/Login.aspx', target='_blank')
-            span.mdi.mdi-bug-check
-            span.menu-title Reportar Prácticas
-        li.nav-item
-          a.nav-link.cursor--pointer(href='#', ng-Click="vm.loginPlanMejoramiento()")
-            span.mdi.mdi-progress-check
-            span.menu-title Planes de Mejoramiento
-        li.nav-item
-          a.nav-link(href='/ftp?path=Riesgos y contingencias')
-            span.mdi.mdi-cloud-alert
-            span.menu-title Riesgos y Contingencias
-        li.nav-item
-          a.nav-link(data-toggle='collapse' href='#submenu_opcionesGenerales', aria-expanded='false' aria-controls='submenu_opcionesGenerales')
+          a.nav-link(data-toggle='collapse' href='#submenu', aria-expanded='false' aria-controls='submenu')
             span.mdi.mdi-menu
             span.menu-title Opciones Generales
             i.menu-arrow
-          #submenu_opcionesGenerales.collapse
+          #submenu.collapse
             ul.nav.flex-column.sub-menu
               li.nav-item
-                a.nav-link(href='/ftp?path=Direccionamiento') Direccionamiento Estratégico
-              li.nav-item
-                a.nav-link(href='/ftp?path=Modelo Procesos de Calidad') Modelo de Procesos
-              li.nav-item
-                a.nav-link(href='/ftp?path=Habilitacion - PAMEC') Habilitación PAMEC
-              li.nav-item
-                a.nav-link(href='/ftp?path=Acreditacion ISO 9000') Acreditación ISO 9000
-              li.nav-item
-                a.nav-link(href='/ftp?path=Seguridad') Seguridad Clínica
-              li.nav-item
-                a.nav-link(href='/ftp?path=Cultura de Calidad') Cultura de Calidad
+                a.nav-link(href='#') Submenu
